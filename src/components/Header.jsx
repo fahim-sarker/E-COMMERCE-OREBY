@@ -14,8 +14,8 @@ const Header = () => {
                     <div className="w-1/4">
                         <img src={Lg} alt="logo" />
                     </div>
-                    <div className="w-3/4">
-                        <ul className={`lg:flex gap-[40px] lg:justify-center pt-[30px] lg:pt-[0] lg:static text-center font-sans] text-[18px] absolute  duration-700 ease-out ${show == true ?"bg-[aliceblue] w-[50%]  top-[50px] left-[0px]" : "bg-[] top-[50px] left-[-100px]"}`}>
+                    <div className="w-3/4 z-50">
+                        <ul className={`lg:flex gap-[40px] lg:justify-center pt-[30px] lg:pt-[0] lg:static text-center font-sans] text-[18px] absolute  duration-700 ease-out ${show == true ?"bg-[beige] w-[50%]  top-[50px] left-[0px] h-[500px]" : "bg-[] top-[50px] left-[-100px]"}`}>
                             <li className='py-[5px] lg:py-[0px] font-normal hover:text-[#262626] text-[#767676] transition ease-in-out delay-400'>Home</li>
                             <li className='py-[5px] lg:py-[0px] font-normal hover:text-[#262626] text-[#767676] transition ease-in-out delay-400'>Shop</li>
                             <li className='py-[5px] lg:py-[0px] font-normal hover:text-[#262626] text-[#767676] transition ease-in-out delay-400'>About</li>
