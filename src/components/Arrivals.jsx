@@ -82,7 +82,7 @@ const Arrivals = () => {
           </div>
         </div>
         <div className="lg:flex justify-between px-[20px] lg:px-0">
-            <div className="flex gap-[113px] lg:w-[23%] pb-[15px]">
+            <div className="flex gap-[30px] lg:w-[23%] pb-[15px]">
               <div className="">
                 <p className='font-sans font-bold text-[18px] text-[#262626]'>Basic Crew Neck Tee</p>
               </div>
@@ -90,7 +90,7 @@ const Arrivals = () => {
                 <p className='font-sans font-normal text-[16px] text-[#767676]'>$44.00</p>
               </div>
             </div>
-            <div className="flex gap-[113px] lg:w-[23%] pb-[15px]">
+            <div className="flex gap-[30px] lg:w-[23%] pb-[10px]">
             <div className="">
                 <p className='font-sans font-bold text-[18px] text-[#262626]'>Basic Crew Neck Tee</p>
               </div>
@@ -98,7 +98,7 @@ const Arrivals = () => {
                 <p className='font-sans font-normal text-[16px] text-[#767676]'>$44.00</p>
               </div>
             </div>
-            <div className="flex lg:w-[23%] gap-[113px] pb-[15px]">
+            <div className="flex lg:w-[23%] gap-[30px] pb-[15px]">
             <div className="">
                 <p className='font-sans font-bold text-[18px] text-[#262626]'>Basic Crew Neck Tee</p>
               </div>
@@ -106,7 +106,7 @@ const Arrivals = () => {
                 <p className='font-sans font-normal text-[16px] text-[#767676]'>$44.00</p>
               </div>
             </div>
-            <div className="flex lg:w-[23%] gap-[113px] pb-[15px]">
+            <div className="flex lg:w-[23%] gap-[30px] pb-[15px]">
             <div className="">
                 <p className='font-sans font-bold capitalize text-[18px] text-[#262626]'>Basic Crew Neck Tee</p>
               </div>
