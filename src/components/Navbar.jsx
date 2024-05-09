@@ -12,17 +12,29 @@ const Navbar = () => {
     let [usercartshow, setusercartShow] = useState(false)
 
     let catref = useRef ()
-
+    let userref = useRef ()
+    let usercartref = useRef ()
 
     useEffect(()=>{
-        document.addEventListener("click",(e)=>{
-           if(catref.current.contains(e.target) == true){
-            setcatShow(!catref)
-           }else{
-            setcatShow(false)
-           }
+        document.addEventListener("click", (e)=>{
+            if(catref.current.contains(e.target) == true){
+                setcatShow(!catshow)
+            }else{
+                setcatShow(false)
+            }
+            if(userref.current.contains(e.target) == true){
+                setuserShow(!usershow)
+            }else{
+                setuserShow(false)
+            }
+            if(usercartref.current.contains(e.target) == true){
+                setusercartShow(!usercartshow)
+            }else{
+                setusercartShow(false)
+            }
         })
-    },[])
+    },[catshow,usershow,usercartshow])
+
 
     return (
         <>
@@ -51,7 +63,7 @@ const Navbar = () => {
                                 }
                             </div>
                         </div>
-                        <div className="3/5 relative">
+                        <div className="3/5 relative mr-5">
                             <div className="">
                                 <input type="search" placeholder='Search Products' className='pl-[20px] py-[16px] h-[50px] lg:w-[601px] outline-none border-2 border-[#262626]' />
                             </div>
@@ -61,12 +73,12 @@ const Navbar = () => {
                         </div>
                         <div className="w-1/5 items-center relative">
                             <div className="flex justify-end gap-x-4">
-                                <div className="flex">
+                                <div ref={userref} className="flex">
                                     <FaUser />
                                     <IoMdArrowDropdown />
                                 </div>
                                 {usershow &&
-                                    <div className=" bg-[#000] w-[200px] py-5 px-5">
+                                    <div className=" bg-[#000] w-[200px] py-5 px-5 absolute top-[30px] z-50 lg:left-0 left-[-50px]">
                                         <ul className='text-white font-sans text-[16px] capitalize'>
                                             <li className='pb-[10px] hover:pl-[10px] duration-300 ease-in-out'>login</li>
                                             <li className='pb-[10px] hover:pl-[10px] duration-300 ease-in-out'>sign up</li>
@@ -74,11 +86,11 @@ const Navbar = () => {
                                         </ul>
                                     </div>
                                 }
-                                <div className="">
+                                <div ref={usercartref} className="">
                                     <FaShoppingCart />
                                 </div>
                                 {usercartshow &&
-                                    <div className="w-[300px] z-50 absolute top-[20px] right-0 ">
+                                    <div className="w-[300px] z-50 absolute top-[20px] right-0 bg-[#fff]">
                                         <div className="flex bg-[beige] justify-around items-center py-[10px]">
                                             <div className="">
                                                 <img src={Cart} alt="" />
