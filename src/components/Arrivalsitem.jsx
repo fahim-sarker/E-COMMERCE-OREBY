@@ -14,7 +14,7 @@ const Arrivalsitem = ({item}) => {
             <img className=' lg:py-0 py-[20px] h-[300px]' src={item.thumbnail} alt="Arr" />
             <div className="bg-[#fff] pr-[20px] pt-[30px] absolute duration-500 ease-in-out left-0 bottom-[-150px] w-full h-[150px] group-hover:bottom-[0] flex justify-end">
                 <ul>
-                    <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626]'>Add to Wish List <GiRoyalLove/></li>
+                    <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] lg:hover:font-bold'>Add to Wish List <GiRoyalLove/></li>
                     <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] hover:font-bold justify-end py-[10px]'>Compare <TfiReload/></li>
                     <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] hover:font-bold justify-end'>Add to Cart <FaShoppingCart/></li>
                 </ul>
