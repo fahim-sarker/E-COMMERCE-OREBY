@@ -65,7 +65,7 @@ const Navbar = () => {
                         </div>
                         <div className="3/5 relative mr-5">
                             <div className="">
-                                <input type="search" placeholder='Search Products' className='pl-[20px] py-[16px] h-[50px] lg:w-[601px] outline-none border-2 border-[#262626]' />
+                                <input type="search" placeholder='Search Products' className='pl-[20px] py-[16px] h-[50px] lg:w-[601px] outline-none ' />
                             </div>
                             <div className="absolute top-[50%] translate-y-[-50%] right-[20px]">
                                 <FaSearch />
@@ -78,7 +78,7 @@ const Navbar = () => {
                                     <IoMdArrowDropdown />
                                 </div>
                                 {usershow &&
-                                    <div className=" bg-[#000] w-[200px] py-5 px-5 absolute top-[30px] z-50 lg:left-0 left-[-50px]">
+                                    <div className=" bg-[#000] w-[200px] py-5 px-5 absolute top-[30px] z-50 lg:left-0 left-[-80px]">
                                         <ul className='text-white font-sans text-[16px] capitalize'>
                                             <li className='pb-[10px] hover:pl-[10px] duration-300 ease-in-out'>login</li>
                                             <li className='pb-[10px] hover:pl-[10px] duration-300 ease-in-out'>sign up</li>
@@ -90,7 +90,7 @@ const Navbar = () => {
                                     <FaShoppingCart />
                                 </div>
                                 {usercartshow &&
-                                    <div className="w-[300px] z-50 absolute top-[20px] right-0 bg-[#fff]">
+                                    <div className="w-[300px] z-50 absolute top-[20px] right-0 bg-[#fff] pb-3">
                                         <div className="flex bg-[beige] justify-around items-center py-[10px]">
                                             <div className="">
                                                 <img src={Cart} alt="" />
@@ -104,15 +104,15 @@ const Navbar = () => {
                                             </div>
                                         </div>
 
-                                        <div className="py-[10px]">
+                                        <div className="py-[10px] px-3">
                                             <h3 className='font-sans text-[16px] capitalize'>subtotal:<span className='font-sans text-[16px] capitalize font-bold'> $44.00</span></h3>
                                         </div>
-                                        <div className="flex justify-between">
+                                        <div className="flex justify-between px-3">
                                             <div className="">
-                                                <a className='w-[148px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold' href="#">view cart</a>
+                                                <a className='w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold hover:bg-[#262626] duration-500 ease-in-out hover:text-white rounded-l' href="#">view cart</a>
                                             </div>
                                             <div className="">
-                                                <a className='w-[148px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold bg-[#000] text-white' href="#">checkout</a>
+                                                <a className='w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold bg-[#000] text-white hover:bg-[#fff] duration-500 ease-in-out hover:text-black rounded-l' href="#">checkout</a>
                                             </div>
                                         </div>
                                     </div>

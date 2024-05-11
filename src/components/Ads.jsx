@@ -9,13 +9,13 @@ const Ads = () => {
     <section className="lg:py-[150px] py-[0]">
       <Container>
         <div className="flex justify-between">
-            <div className="w-[48%]">
-                <img src={Ad} alt="" />
-            </div>
-            <div className="w-[48%]">
-                <img className='md:mb-[17px] lg:mb-[38px] mb-[10px] ' src={Ad1} alt="" />
-                <img src={Ad2} alt="" />
-            </div>
+          <div className="w-[48%]">
+            <img src={Ad} alt="" />
+          </div>
+          <div className="w-[48%]">
+            <img className='md:mb-[17px] lg:mb-[33px] mb-[10px] ' src={Ad1} alt="" />
+            <img src={Ad2} alt="" />
+          </div>
         </div>
       </Container>
     </section>
