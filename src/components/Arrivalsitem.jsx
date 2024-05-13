@@ -4,7 +4,6 @@ import { FaShoppingCart } from "react-icons/fa";
 
 
 const Arrivalsitem = ({ item }) => {
-    console.log(item);
     return (
         <>
             <div className="lg:w-[24%] w-[48%]">
