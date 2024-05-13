@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import Banner from './components/Banner'
 import Ads from './components/Ads'
 import Arrivals from './components/Arrivals'
+import Ads2 from './components/Ads2'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
     <Banner/>
     <Ads/>
     <Arrivals/>
+    <Ads2/>
+    <Footer/>
     </>
   )
 }
