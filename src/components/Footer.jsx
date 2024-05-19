@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <section className='bg-[#F5F5F3] py-[55px]'>
       <Container>
-        <Flex>
-            <div className="lg:w-[15%]">
+        <Flex className="flex-wrap">
+            <div className="lg:w-[15%] w-[30%]">
                 <h2 className='font-sans text-[16px] font-bold text-[#262626] pb-4'>MENU</h2>
                 <ul className='text-[16px] font-sans font-normal text-[#6D6D6D]'>
                     <li className='pb-[6px]'>Home</li>
@@ -19,7 +19,7 @@ const Footer = () => {
                     <li className='pb-[6px]'>Journal</li>
                 </ul>
             </div>
-            <div className="lg:w-[15%]">
+            <div className="lg:w-[15%]  w-[35%]">
                 <h2 className='font-sans text-[16px] font-bold text-[#262626] pb-4'>SHOP</h2>
                 <ul className='text-[16px] font-sans font-normal text-[#6D6D6D]'>
                     <li className='pb-[6px]'>Category 1</li>
@@ -29,7 +29,7 @@ const Footer = () => {
                     <li className='pb-[6px]'>Category 5</li>
                 </ul>
             </div>
-            <div className="lg:w-[20%]">
+            <div className="lg:w-[20%]  w-[35%]">
                 <h2 className='font-sans text-[16px] font-bold text-[#262626] pb-4'>HELP</h2>
                 <ul className='text-[16px] font-sans font-normal text-[#6D6D6D]'>
                     <li className='pb-[6px]'>Privacy Policy</li>
@@ -39,22 +39,22 @@ const Footer = () => {
                     <li className='pb-[6px]'>Secure Payments</li>
                 </ul>
             </div>
-            <div className="lg:w-[35%]">
+            <div className="lg:w-[35%]  w-[70%]">
                 <ul className='text-[16px] font-sans font-bold text-[#6D6D6D]'>
                     <li className='pb-[6px]'>(052) 611-5711</li>
                     <li className='pb-[6px]' >company@domain.com</li>
                     <li className='pb-[6px]'>575 Crescent Ave. Quakertown, PA 18951</li>
                 </ul>
             </div>
-            <div className="lg:w-[15%]">
+            <div className="lg:w-[15%]  w-[20%] lg:mt-0 mt-[20px]">
                <img src={Ft} alt="footer" />
             </div>
         </Flex>
-        <Flex className="justify-between pt-[65px]">
-            <div className="flex gap-x-3">
-                <FaFacebookF/>
-                <FaLinkedinIn />
-                <FaInstagram />
+        <Flex className="justify-between pt-[65px] items-center">
+            <div className="lg:flex lg:gap-x-3  w-[30%] items-center lg:pl-0 pl-5">
+                <FaFacebookF className='text-[25px]'/>
+                <FaLinkedinIn className='my-[5px] lg:my-0 text-[25px]' />
+                <FaInstagram className='text-[25px]' />
             </div>
             <div className="">
                 <p  className='text-[16px] font-sans font-normal text-[#6D6D6D]'>2020 Orebi Minimal eCommerce Figma Template by Adveits</p>

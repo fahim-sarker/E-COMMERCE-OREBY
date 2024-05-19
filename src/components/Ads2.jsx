@@ -6,7 +6,7 @@ const Ads2 = () => {
   return (
     <>
       <Container>
-        <div className="lg:py-[130px] py-[20px]">
+        <div className="lg:py-[50px] py-[0px]">
             <img src={Ad}alt="ads" />
         </div>
       </Container>
