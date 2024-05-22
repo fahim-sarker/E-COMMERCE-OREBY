@@ -38,7 +38,16 @@ const Product = () => {
   let paginate = (pagenumber)=>{
     setcurrentpage(pagenumber + 1);
   }
-
+  let next = ()=>{
+   if(currentpage < pagenumber .length){
+    setcurrentpage((state)=>state + 1)
+   }
+  }
+  let prev = ()=>{
+   if(currentpage > 1){
+    setcurrentpage((state)=>state -1)
+   }
+  }
 
 
 
@@ -61,6 +70,8 @@ const Product = () => {
       }
     })
   }, [catshow, bandshow, priceshow])
+
+  
 
 
 
@@ -189,7 +200,7 @@ const Product = () => {
              <Post allData={allData}/>
             </div>
               <div className="text-end">
-                <PaginationArea pagenumber={pagenumber} paginate={paginate}/>
+                <PaginationArea pagenumber={pagenumber} paginate={paginate} currentpage={currentpage} next={next} prev={prev}/>
               </div>
           </div>
         </div>
