@@ -11,29 +11,29 @@ const Navbar = () => {
     let [usershow, setuserShow] = useState(false)
     let [usercartshow, setusercartShow] = useState(false)
 
-    let catref = useRef ()
-    let userref = useRef ()
-    let usercartref = useRef ()
+    let catref = useRef()
+    let userref = useRef()
+    let usercartref = useRef()
 
-    useEffect(()=>{
-        document.addEventListener("click", (e)=>{
-            if(catref.current.contains(e.target) == true){
+    useEffect(() => {
+        document.addEventListener("click", (e) => {
+            if (catref.current.contains(e.target) == true) {
                 setcatShow(!catshow)
-            }else{
+            } else {
                 setcatShow(false)
             }
-            if(userref.current.contains(e.target) == true){
+            if (userref.current.contains(e.target) == true) {
                 setuserShow(!usershow)
-            }else{
+            } else {
                 setuserShow(false)
             }
-            if(usercartref.current.contains(e.target) == true){
+            if (usercartref.current.contains(e.target) == true) {
                 setusercartShow(!usercartshow)
-            }else{
+            } else {
                 setusercartShow(false)
             }
         })
-    },[catshow,usershow,usercartshow])
+    }, [catshow, usershow, usercartshow])
 
 
     return (
@@ -52,12 +52,12 @@ const Navbar = () => {
                                 {catshow &&
                                     <div className=" z-50 absolute top-[180px] bg-[#262626] w-[250px] pl-[10px]  py-[20px]">
                                         <ul className='text-[14px] font-sans font-normal text-white capitalize '>
-                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5'>accecories</li>
-                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5'>furniture</li>
-                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5'>electronics</li>
-                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5'>cloths</li>
-                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5'>bags</li>
-                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5'>home appliances</li>
+                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5 border-b border-[#D8D8D8]'>accecories</li>
+                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5 border-b border-[#D8D8D8]'>furniture</li>
+                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5 border-b border-[#D8D8D8]'>electronics</li>
+                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5 border-b border-[#D8D8D8]'>cloths</li>
+                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5 border-b border-[#D8D8D8]'>bags</li>
+                                            <li className='py-[10px] duration-300 ease-in-out hover:pl-5 border-b border-[#D8D8D8]'>home appliances</li>
                                         </ul>
                                     </div>
                                 }

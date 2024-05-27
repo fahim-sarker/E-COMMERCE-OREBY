@@ -16,7 +16,7 @@ const Ads = () => {
             <div className="">
               <img src={Ad1} alt="" />
             </div>
-            <div className="lg:mt-[40px]">
+            <div className="lg:mt-[40px] mt-[10px]">
               <img src={Ad2} alt="" />
             </div>
           </div>

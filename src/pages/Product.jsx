@@ -197,7 +197,7 @@ const Product = () => {
               </div>
             </div>
             <div className="flex justify-between flex-wrap pt-[60px]">
-             <Post allData={allData}/>
+             <Post className="" allData={allData}/>
             </div>
               <div className="text-end">
                 <PaginationArea pagenumber={pagenumber} paginate={paginate} currentpage={currentpage} next={next} prev={prev}/>
