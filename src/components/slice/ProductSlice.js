@@ -20,7 +20,9 @@ export const ProductSlice = createSlice({
     state.cartitem[action.payload].qty += 1
    },
    productdeccrement: (state, action) =>{
+    if(state.cartitem[action.payload].qty -= 1 >1){
       state.cartitem[action.payload].qty -= 1
+    }
    }
   },
 })
