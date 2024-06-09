@@ -4,18 +4,46 @@ import { RxCross2 } from "react-icons/rx";
 import Lg from "../assets/logo.png"
 import Flex from '../components/Flex';
 import { useDispatch, useSelector } from 'react-redux';
-import { productdeccrement, productincrement } from '../components/slice/ProductSlice';
+import { productdeccrement, productincrement, productremove } from '../components/slice/ProductSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Cart = () => {
   let dispatch = useDispatch()
-  let data = useSelector((state)=>state.Product.cartitem)
+  let navigate = useNavigate()
+  let data = useSelector((state) => state.Product.cartitem)
 
-  let handleincrement = (index) =>{
-   dispatch(productincrement(index))
+  let handleincrement = (index) => {
+    dispatch(productincrement(index))
   }
-  let handledecrement = (index) =>{
-   dispatch(productdeccrement(index))
+  let handledecrement = (index) => {
+    dispatch(productdeccrement(index))
   }
+  let handleremove = (index) => {
+    dispatch(productremove(index))
+  }
+
+
+ const {totalprice,totalquantity} = data.reduce((acc, item) =>{
+  acc.totalprice += item.price * item.qty
+  acc.totalquantity += item.qty
+  return acc
+ },{totalprice:0,totalquantity:0})
+
+
+ let handlecheckout= ()=>{
+  toast("please wait!")
+    setTimeout(()=>{
+      navigate("/checkout")
+    },2000)
+ }
+
+
+
+
 
   return (
     <div className='lg:my-[80px]'>
@@ -37,27 +65,27 @@ const Cart = () => {
               <h4 className='text-[16px] font-sans font-bold text-center'>Total</h4>
             </div>
           </div>
-          {data.map((item,index)=>(
-          <div className="flex justify-between lg:py-10 py-2 items-center border-b border-[#F0F0F0]">
-            <div className="lg:flex  lg:items-center lg:w-[40%] w-[30%] lg:pl-10 pl-2 gap-x-20">
-              <RxCross2 />
-              <img className='h-[150px] lg:w-[150px] w-[100%]' src={item.thumbnail} alt="" />
-              <p className='lg:text-[16px] text-[12px] font-sans font-bold'>{item.title}</p>
-            </div>
-            <div className="w-[15%]">
-              <p className='text-[16px] font-sans font-bold text-center'>${item.price}</p>
-            </div>
-            <div className="w-[30%]">
-              <div className="w-[136px] h-[36px]  flex leading-[36px]  px-[25px] lg:gap-x-6 gap-x-3 mx-auto">
-                <p onClick={()=>handledecrement(index)} className='font-bold text-[25px cursor-pointer'>-</p>
-                <p className='font-bold cursor-pointer'>{item.qty}</p>
-                <p onClick={()=>handleincrement(index)} className='font-bold text-[25px] cursor-pointer'>+</p>
+          {data.map((item, index) => (
+            <div className="flex justify-between lg:py-10 py-2 items-center border-b border-[#F0F0F0]">
+              <div className="lg:flex  lg:items-center lg:w-[40%] w-[30%] lg:pl-10 pl-2 gap-x-20">
+                <RxCross2 onClick={() => handleremove(index)} />
+                <img className='h-[150px] lg:w-[150px] w-[100%]' src={item.thumbnail} alt="" />
+                <p className='lg:text-[16px] text-[12px] font-sans font-bold'>{item.title}</p>
+              </div>
+              <div className="w-[15%]">
+                <p className='text-[16px] font-sans font-bold text-center'>${item.price}</p>
+              </div>
+              <div className="w-[30%]">
+                <div className="w-[136px] h-[36px]  flex leading-[36px]  px-[25px] lg:gap-x-6 gap-x-3 mx-auto">
+                  <p onClick={() => handledecrement(index)} className='font-bold text-[25px cursor-pointer'>-</p>
+                  <p className='font-bold cursor-pointer'>{item.qty}</p>
+                  <p onClick={() => handleincrement(index)} className='font-bold text-[25px] cursor-pointer'>+</p>
+                </div>
+              </div>
+              <div className="w-[15%]">
+                <p className='text-[16px] font-sans font-bold text-center'>${item.price * item.qty}</p>
               </div>
             </div>
-            <div className="w-[15%]">
-              <p className='text-[16px] font-sans font-bold text-center'>${item.price*item.qty}</p>
-            </div>
-          </div>
           ))}
           <div className="flex justify-between px-10 pt-5">
             <div className="flex py-4 items-center">
@@ -76,6 +104,26 @@ const Cart = () => {
           </div>
         </div>
         <p className='text-end text-[16px] font-sans font-bold py-4'>Cart totals</p>
+        <div className="flex justify-end">
+          <div className=" border-2 border-[#262626] lg:w-[400px] w-[300px]">
+          <div className="flex px-4  py-3 lg:w-[398px] w-[298px] justify-between pb-5 border-b border-[#262626]">
+          <h3 className='text-[16px] font-sans font-bold'>Subtotal</h3>
+          <h3 className='text-[16px] font-sans font-bold'>${totalprice}</h3>
+        </div>
+        <div className="flex px-4 py-3 lg:w-[398px] w-[298px]   justify-between pb-5 border-b border-[#262626]">
+          <h3 className='text-[16px] font-sans font-bold'>Quantity</h3>
+          <h3 className='text-[16px] font-sans font-bold'>{totalquantity}</h3>
+        </div>
+        <div className="flex px-4 py-3 lg:w-[398px] w-[298px]  justify-between pb-5">
+          <h3 className='text-[16px] font-sans font-bold'>Total</h3>
+          <h3 className='text-[16px] font-sans font-bold'>${totalprice}</h3>
+        </div>
+          </div>
+        </div>
+        <div className="flex justify-end my-4" onClick={handlecheckout}>
+          <p className='w-[230px] h-[60px] leading-[60px] text-center border-2 border-[#262626] font-sans text-[18px] capitalize font-bold bg-[#000] text-white hover:bg-[#fff] duration-500 ease-in-out hover:text-black rounded-l'>Proceed to Checkout</p>
+        </div>
+        <ToastContainer />
       </Container>
     </div>
   )

@@ -5,6 +5,8 @@ import Product from "./pages/Product"
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Productdetaills from './pages/Productdetaills'
 import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
+
 
 let router = createBrowserRouter(createRoutesFromElements(
   <Route element={<Rootlayout/>}>
@@ -12,6 +14,7 @@ let router = createBrowserRouter(createRoutesFromElements(
     <Route path='/product' element={<Product/>}></Route>
     <Route path='/product/:id' element={<Productdetaills/>}></Route>
     <Route path='/cart' element={<Cart/>}></Route>
+    <Route path='/checkout' element={<Checkout/>}></Route>
   </Route>
 ))
 
