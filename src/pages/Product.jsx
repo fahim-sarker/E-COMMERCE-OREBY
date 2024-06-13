@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import Flex from '../components/Flex'
 import Container from '../components/Container'
-import { FaPlus } from "react-icons/fa";
 import { TiArrowSortedUp } from "react-icons/ti";
 import { BiSolidCategory } from "react-icons/bi";
 import { TfiMenuAlt } from "react-icons/tfi";
@@ -15,6 +13,8 @@ const Product = () => {
   let [catshow, setcatShow] = useState(false)
   let [bandshow, setbandShow] = useState(false)
   let [priceshow, setpriceShow] = useState(false)
+  let [category, setCategory] = useState([])
+  let [categorysearchfilter, setCategorysearchfilter] = useState([])
 
   let catref = useRef()
   let bandref = useRef()
@@ -30,7 +30,7 @@ const Product = () => {
 
   let pagenumber = []
 
-  for(let i = 0; i < Math.ceil(data.length / perpage); i ++){
+  for(let i = 0; i < Math.ceil(categorysearchfilter.length > 0 ?categorysearchfilter : data.length / perpage); i ++){
     pagenumber.push(i)
   }
 
@@ -48,8 +48,6 @@ const Product = () => {
     setcurrentpage((state)=>state -1)
    }
   }
-
-
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -71,9 +69,16 @@ const Product = () => {
     })
   }, [catshow, bandshow, priceshow])
 
-  
 
+  useEffect(()=>{
+    setCategory([...new Set (data.map((item)=>item.category))])
+  },[data])
+  let handlesubcategory = (citem)=>{
+    let categoryfilter = data.filter((item)=>item.category == citem)
+    setCategorysearchfilter(categoryfilter)
+  }
 
+   
 
 
 
@@ -89,11 +94,9 @@ const Product = () => {
             </div>
             <div className="">
               <ul className=''>
-                <li className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0]'>Category 1   <FaPlus /></li>
-                <li className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0]'>Category 2   <FaPlus /></li>
-                <li className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0]'>Category 3   <FaPlus /></li>
-                <li className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0]'>Category 4   <FaPlus /></li>
-                <li className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0]'>Category 5   <FaPlus /></li>
+                {category.map((item)=>(
+                  <li onClick={()=>handlesubcategory(item)} className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0] capitalize'>{item}</li>
+                ))}
               </ul>
             </div>
             <div ref={bandref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
@@ -197,7 +200,7 @@ const Product = () => {
               </div>
             </div>
             <div className="flex justify-between flex-wrap pt-[60px]">
-             <Post className="" allData={allData}/>
+             <Post className="" allData={allData} categorysearchfilter={categorysearchfilter}/>
             </div>
               <div className="text-end">
                 <PaginationArea pagenumber={pagenumber} paginate={paginate} currentpage={currentpage} next={next} prev={prev}/>

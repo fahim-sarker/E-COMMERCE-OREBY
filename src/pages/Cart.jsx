@@ -44,7 +44,6 @@ const Cart = () => {
 
 
 
-
   return (
     <div className='lg:my-[80px]'>
       <Container>

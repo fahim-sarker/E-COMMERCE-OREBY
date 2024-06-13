@@ -4,9 +4,12 @@ import { FaBars, FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Cart from "../assets/cart.png"
 import { RxCross2 } from "react-icons/rx";
+import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
+    let data = useSelector((state) => state.Product.cartitem
+    )
     let [catshow, setcatShow] = useState(false)
     let [usershow, setuserShow] = useState(false)
     let [usercartshow, setusercartShow] = useState(false)
@@ -87,7 +90,12 @@ const Navbar = () => {
                                     </div>
                                 }
                                 <div ref={usercartref} className="">
-                                    <FaShoppingCart />
+                                    <div className="realative">
+                                        <FaShoppingCart />
+                                        {data.length > 0 ?<div className="h-[20px] w-[20px] bg-[#262626] text-white rounded-full absolute top-[-18px] right-[-12px] text-center">
+                                            {data.length}
+                                        </div> : ""}
+                                    </div>
                                 </div>
                                 {usercartshow &&
                                     <div className="w-[300px] z-50 absolute top-[20px] right-0 bg-[#fff] pb-3">

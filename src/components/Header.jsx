@@ -16,7 +16,7 @@ const Header = () => {
                 setShow(false)
             }
         })
-    }, [show])
+    },[show])
 
 
     return (
