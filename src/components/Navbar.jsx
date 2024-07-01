@@ -92,7 +92,7 @@ const Navbar = () => {
                                 <div ref={usercartref} className="">
                                     <div className="realative">
                                         <FaShoppingCart />
-                                        {data.length > 0 ?<div className="h-[20px] w-[20px] bg-[#262626] text-white rounded-full absolute top-[-18px] right-[-12px] text-center">
+                                        {data.length > 0 ?<div className="h-[20px] w-[20px] leading-[20px] bg-[#262626] text-white rounded-full absolute top-[-18px] right-[-12px] text-center">
                                             {data.length}
                                         </div> : ""}
                                     </div>

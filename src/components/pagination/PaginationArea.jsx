@@ -3,7 +3,7 @@ import React from 'react'
 const PaginationArea = ({ pagenumber, paginate, currentpage, next, prev }) => {
   return (
     <>
-      <nav aria-label="Page navigation example">
+      <nav className='mt-[50px]' aria-label="Page navigation example">
         <ul className="inline-flex -space-x-px text-sm cursor-pointer">
           {pagenumber.length > 0 &&
             <li onClick={prev}>

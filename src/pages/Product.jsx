@@ -15,6 +15,7 @@ const Product = () => {
   let [priceshow, setpriceShow] = useState(false)
   let [category, setCategory] = useState([])
   let [categorysearchfilter, setCategorysearchfilter] = useState([])
+  let [menulist, Setmenulist] = useState ("")
 
   let catref = useRef()
   let bandref = useRef()
@@ -76,6 +77,10 @@ const Product = () => {
   let handlesubcategory = (citem)=>{
     let categoryfilter = data.filter((item)=>item.category == citem)
     setCategorysearchfilter(categoryfilter)
+  }
+
+  let handlelist = () => {
+    Setmenulist("activelist")
   }
 
    
@@ -169,10 +174,10 @@ const Product = () => {
           <div className="lg:w-[75%] lg:pt-[220px]">
             <div className="lg:flex justify-between ">
               <div className="lg:w-[20%] flex gap-x-7 items-center lg:pt-0 pt-[20px] lg:justify-start justify-between lg:px-0 px-2">
-                <div className="bg-[#000] h-[36px] w-[36px] px-2 py-2 border-2 border-bg-[#000]">
+                <div onClick={()=>Setmenulist("")} className="bg-[#000] cursor-pointer h-[36px] w-[36px] px-2 py-2 border-2 border-bg-[#000]">
                   <BiSolidCategory className='text-white font-[20px]' />
                 </div>
-                <div className="border-2 border-bg-[#000] px-2 py-2">
+                <div onClick={handlelist} className="border-2 border-bg-[#000] cursor-pointer px-2 py-2">
                   <TfiMenuAlt />
                 </div>
               </div>
@@ -199,8 +204,8 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between flex-wrap pt-[60px]">
-             <Post className="" allData={allData} categorysearchfilter={categorysearchfilter}/>
+            <div className="">
+             <Post className="" allData={allData} categorysearchfilter={categorysearchfilter} menulist={menulist}/>
             </div>
               <div className="text-end">
                 <PaginationArea pagenumber={pagenumber} paginate={paginate} currentpage={currentpage} next={next} prev={prev}/>

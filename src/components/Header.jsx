@@ -36,8 +36,12 @@ const Header = () => {
                                 <li className='py-[10px] lg:py-[0px] font-bold  lg:hover:text-[#262626] lg:text-[#767676] duration-300 ease-in-out text-white hover:text-[gray]'>
                                     <Link to="/product">shop</Link>
                                 </li>
-                                <li className='py-[10px] lg:py-[0px] font-bold  lg:hover:text-[#262626] lg:text-[#767676] duration-300 ease-in-out text-white hover:text-[gray]'>About</li>
-                                <li className='py-[10px] lg:py-[0px] font-bold  lg:hover:text-[#262626] lg:text-[#767676] duration-300 ease-in-out text-white hover:text-[gray]'>Contacts</li>
+                                <li className='py-[10px] lg:py-[0px] font-bold  lg:hover:text-[#262626] lg:text-[#767676] duration-300 ease-in-out text-white hover:text-[gray]'>
+                                    <Link to="/about">About</Link>
+                                </li>
+                                <li className='py-[10px] lg:py-[0px] font-bold  lg:hover:text-[#262626] lg:text-[#767676] duration-300 ease-in-out text-white hover:text-[gray]'>
+                                    <Link to="/contact">Contacts </Link>
+                                    </li>
                                 <li className='py-[10px] lg:py-[0px] font-bold  lg:hover:text-[#262626] lg:text-[#767676] duration-300 ease-in-out text-white hover:text-[gray]'>Journal</li>
                             </ul>
                         </div>
