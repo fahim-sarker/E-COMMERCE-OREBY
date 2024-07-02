@@ -21,7 +21,7 @@ const Post = ({ allData, categorysearchfilter,menulist }) => {
     Setcateshow(false)
   }
   let handlehide = () => {
-    let filterseparate = categorysearchfilter.slice(0, 5)
+    let filterseparate = categorysearchfilter.slice(0, 3)
     SetfiloterShow(filterseparate)
     Setcateshow(true)
   }

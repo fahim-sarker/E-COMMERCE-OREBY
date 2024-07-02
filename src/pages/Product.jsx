@@ -22,7 +22,7 @@ const Product = () => {
   let priceref = useRef()
 
   let [currentpage, setcurrentpage] = useState (1)
-  let [perpage, setperpage] = useState (6)
+  let [perpage, setperpage] = useState (20)
 
   let lastpage = perpage * currentpage
   let firstpage = lastpage - perpage
@@ -94,10 +94,10 @@ const Product = () => {
           <div className="lg:w-[20%] w-[100%] flex-wrap">
             <h2 className='font-sans text-[49px] font-bold text-[#262626] pb-[11px]'>Products</h2>
             <p className='font-sans font-normal text-[16px] text-[#767676]'>Home-Products</p>
-            <div className="lg:pt-[112px] flex justify-between items-center">
+            <div className="lg:pt-[112px]  flex justify-between items-center">
               <h2 className='cursor-pointer font-sans text-[20px] font-bold text-[#262626] pb-[30px]'>Shop by Category</h2>
             </div>
-            <div className="">
+            <div className="h-[600px] overflow-y-scroll">
               <ul className=''>
                 {category.map((item)=>(
                   <li onClick={()=>handlesubcategory(item)} className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0] capitalize'>{item}</li>
