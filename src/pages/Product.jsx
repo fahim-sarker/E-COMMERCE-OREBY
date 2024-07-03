@@ -16,6 +16,8 @@ const Product = () => {
   let [category, setCategory] = useState([])
   let [categorysearchfilter, setCategorysearchfilter] = useState([])
   let [menulist, Setmenulist] = useState ("")
+  let [bandgory, SetBandgory] = useState ([])
+  let [brandsearchfilter, SetBrandsearchfilter] = useState ([])
 
   let catref = useRef()
   let bandref = useRef()
@@ -73,10 +75,17 @@ const Product = () => {
 
   useEffect(()=>{
     setCategory([...new Set (data.map((item)=>item.category))])
+    SetBandgory([...new Set (data.map((item)=>item.brand))])
   },[data])
+
   let handlesubcategory = (citem)=>{
     let categoryfilter = data.filter((item)=>item.category == citem)
     setCategorysearchfilter(categoryfilter)
+  }
+
+  let handlebrand = (citem) =>{
+    let brandfilter = data.filter((item)=>item.brand == citem)
+    setCategorysearchfilter(brandfilter)
   }
 
   let handlelist = () => {
@@ -84,8 +93,6 @@ const Product = () => {
   }
 
    
-
-
 
   return (
     <section className='lg:py-[124px]'>
@@ -97,13 +104,24 @@ const Product = () => {
             <div className="lg:pt-[112px]  flex justify-between items-center">
               <h2 className='cursor-pointer font-sans text-[20px] font-bold text-[#262626] pb-[30px]'>Shop by Category</h2>
             </div>
-            <div className="h-[600px] overflow-y-scroll">
+            <div className="h-[500px] overflow-y-scroll">
               <ul className=''>
                 {category.map((item)=>(
                   <li onClick={()=>handlesubcategory(item)} className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0] capitalize'>{item}</li>
                 ))}
               </ul>
             </div>
+            <div ref={catref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
+              <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Brand</h2>
+              <TiArrowSortedUp />
+            </div>  
+              <div className="h-[500px] overflow-y-scroll">
+                {bandgory.map((item)=>(
+                <ul className='py-[30px] border-b border-[#F0F0F0]'>
+                  <li onClick={()=>handlebrand(item)} className='font-sans text-[16px] font-normal capitalize'>{item}</li>
+                </ul>
+                ))}
+              </div>
             <div ref={bandref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
               <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Color</h2>
               <TiArrowSortedUp />
@@ -121,29 +139,6 @@ const Product = () => {
                 after:translate-y-[-48%] after:left-[0px] after:h-[11px] after:w-[11px] after:bg-[#B6B6B6] pl-[20px] after:rounded-full'>Color 4</li>
                   <li className='relative font-sans text-[16px] py-[30px] border-b border-[#F0F0F0] font-normal after:absolute after:content-[""] after:top-[48%]
                 after:translate-y-[-48%] after:left-[0px] after:h-[11px] after:w-[11px] after:bg-[#15CBA5] pl-[20px] after:rounded-full'>Color 5</li>
-                </ul>
-              </div>
-            }
-            <div ref={catref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
-              <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Brand</h2>
-              <TiArrowSortedUp />
-            </div>
-            {catshow &&
-              <div className="">
-                <ul className='py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>Brand 1</li>
-                </ul>
-                <ul className=' py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>Brand 2</li>
-                </ul>
-                <ul className=' py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>Brand 3</li>
-                </ul>
-                <ul className='py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>Brand 4</li>
-                </ul>
-                <ul className=' py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>Brand 5</li>
                 </ul>
               </div>
             }
@@ -205,7 +200,7 @@ const Product = () => {
               </div>
             </div>
             <div className="">
-             <Post className="" allData={allData} categorysearchfilter={categorysearchfilter} menulist={menulist}/>
+             <Post className="" allData={allData} categorysearchfilter={categorysearchfilter} brandsearchfilter={brandsearchfilter} menulist={menulist}/>
             </div>
               <div className="text-end">
                 <PaginationArea pagenumber={pagenumber} paginate={paginate} currentpage={currentpage} next={next} prev={prev}/>

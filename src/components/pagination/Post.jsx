@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../slice/ProductSlice';
 
-const Post = ({ allData, categorysearchfilter,menulist }) => {
+const Post = ({ allData, categorysearchfilter, menulist, brandsearchfilter }) => {
+  console.log(brandsearchfilter);
   let [filtershow, SetfiloterShow] = useState([])
   let [cateshow, Setcateshow] = useState(true)
   let dispatch = useDispatch()
+
+
+
   useEffect(() => {
     let filterseparate = categorysearchfilter.slice(0, 5)
     SetfiloterShow(filterseparate)
@@ -21,13 +25,13 @@ const Post = ({ allData, categorysearchfilter,menulist }) => {
     Setcateshow(false)
   }
   let handlehide = () => {
-    let filterseparate = categorysearchfilter.slice(0, 3)
+    let filterseparate = categorysearchfilter.slice(0, 5)
     SetfiloterShow(filterseparate)
     Setcateshow(true)
   }
 
-  let handlecart = (item) =>{
-    dispatch(addToCart({...item,qty:1}))
+  let handlecart = (item) => {
+    dispatch(addToCart({ ...item, qty: 1 }))
   }
 
 
@@ -72,33 +76,33 @@ const Post = ({ allData, categorysearchfilter,menulist }) => {
         </div>
 
         :
-        <div className={`${menulist== "activelist" ? "" : "flex justify-between flex-wrap pt-[60px]"}`}>
+        <div className={`${menulist == "activelist" ? "" : "flex justify-between flex-wrap pt-[60px]"}`}>
           {
-          allData.map((item) => (
-            <div className="lg:w-[32%] w-full py-5">
-              <div className="relative group lg:overflow-hidden">
-                <p className='absolute top-[20px] left-[20px] text-[16px] font-sans font-bold bg-[#000] w-[92px] h-[35px] text-white text-center leading-[35px]'>{item.discountPercentage} %</p>
-                <Link to={`/product/${item.id}`}>
-                  <img className='lg:py-0 py-[20px] lg:h-[300px] w-full h-[350px]' src={item.thumbnail} alt="Arr" />
-                </Link>
-                <div className="bg-[#fff] pr-[20px] pt-[30px] absolute duration-500 ease-in-out left-0 lg:bottom-[-150px] w-full h-[150px] lg:group-hover:bottom-[0] bottom-[-120px] flex justify-end">
-                  <ul>
-                    <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] lg:hover:font-bold'>Add to Wish List <GiRoyalLove /></li>
-                    <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] hover:font-bold justify-end py-[10px]'>Compare <TfiReload /></li>
-                    <li onClick={()=>handlecart(item)} className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] hover:font-bold justify-end'>Add to Cart <FaShoppingCart /></li>
-                  </ul>
+            allData.map((item) => (
+              <div className="lg:w-[32%] w-full py-5">
+                <div className="relative group lg:overflow-hidden">
+                  <p className='absolute top-[20px] left-[20px] text-[16px] font-sans font-bold bg-[#000] w-[92px] h-[35px] text-white text-center leading-[35px]'>{item.discountPercentage} %</p>
+                  <Link to={`/product/${item.id}`}>
+                    <img className='lg:py-0 py-[20px] lg:h-[300px] w-full h-[350px]' src={item.thumbnail} alt="Arr" />
+                  </Link>
+                  <div className="bg-[#fff] pr-[20px] pt-[30px] absolute duration-500 ease-in-out left-0 lg:bottom-[-150px] w-full h-[150px] lg:group-hover:bottom-[0] bottom-[-120px] flex justify-end">
+                    <ul>
+                      <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] lg:hover:font-bold'>Add to Wish List <GiRoyalLove /></li>
+                      <li className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] hover:font-bold justify-end py-[10px]'>Compare <TfiReload /></li>
+                      <li onClick={() => handlecart(item)} className='flex items-center gap-x-3 font-sans text-[16px] duration-300 ease-in-out hover:text[#262626] hover:font-bold justify-end'>Add to Cart <FaShoppingCart /></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="lg:flex justify-between lg:pt-[10px]">
+                  <h2 className='pl-[10px] lg:pl-0 font-sans text-[16px] font-bold text-[#262626]'>{item.title}</h2>
+                  <p className='pl-[10px] lg:pl-0  font-sans text-[16px] font-bold text-[#262626]'>${item.price}</p>
+                </div>
+                <div className="pb-[20px]">
+                  <p className='pl-[10px] lg:pl-0  font-sans text-[16px] font-bold capitalize text-[#767676]'>stock: {item.stock}</p>
                 </div>
               </div>
-              <div className="lg:flex justify-between lg:pt-[10px]">
-                <h2 className='pl-[10px] lg:pl-0 font-sans text-[16px] font-bold text-[#262626]'>{item.title}</h2>
-                <p className='pl-[10px] lg:pl-0  font-sans text-[16px] font-bold text-[#262626]'>${item.price}</p>
-              </div>
-              <div className="pb-[20px]">
-                <p className='pl-[10px] lg:pl-0  font-sans text-[16px] font-bold capitalize text-[#767676]'>stock: {item.stock}</p>
-              </div>
-            </div>
-          ))
-          }  
+            ))
+          }
         </div>
       }
     </>
