@@ -3,6 +3,7 @@ import Container from './Container';
 import { FaBars, FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import Cart from '../assets/cart.png';
+import { Link } from 'react-router-dom';
 import { RxCross2 } from 'react-icons/rx';
 import { useSelector } from 'react-redux';
 import { apidata } from './ContextApi';
@@ -16,7 +17,7 @@ const Navbar = () => {
   let information = useContext(apidata);
   let [searchinput, setSearchInput] = useState('');
   let [searchfilter, setSearchFilter] = useState([]);
-  let [selectedItemIndex, setSelectedItemIndex] = useState(-1); // Track selected item index
+  let [selectedItemIndex, setSelectedItemIndex] = useState(-1); // Track selected item 
   let navigate = useNavigate();
 
   let catref = useRef();
@@ -140,9 +141,8 @@ const Navbar = () => {
                     <div
                       key={item.id}
                       onClick={() => handleSingleSearch(item.id)}
-                      className={`flex bg-[#F0F0F0] justify-around items-center py-[10px] ${
-                        index === selectedItemIndex ? 'bg-[aliceblue]' : ''
-                      }`}
+                      className={`flex bg-[#F0F0F0] justify-around items-center py-[10px] ${index === selectedItemIndex ? 'bg-[aliceblue]' : ''
+                        }`}
                     >
                       <div className="w-[30%]">
                         <img
@@ -193,50 +193,53 @@ const Navbar = () => {
                   </div>
                 </div>
                 {usercartshow && (
-                  <div className="w-[300px] z-50 absolute top-[20px] right-0 bg-[#fff] pb-3">
-                    <div className="flex bg-[beige] justify-around items-center py-[10px]">
-                      <div className="">
-                        <img src={Cart} alt="" />
-                      </div>
-                      <div className="">
-                        <h2 className="font-sans text-[16px] capitalize font-bold pb-[10px]">
-                          black smart watch
-                        </h2>
-                        <h4 className="font-sans text-[16px] capitalize font-bold">
-                          $44.00
-                        </h4>
-                      </div>
-                      <div className="">
-                        <RxCross2 />
-                      </div>
-                    </div>
+                  <div className="w-[300px] z-50 absolute top-[50px] right-0 bg-[#fff] pb-3">
+                    {data.map((item) => (
+                      <div className="pb-5">
+                        <div className="flex  bg-[beige] justify-around items-center py-[10px]">
+                          <div className="">
+                            <img className='w-[100px] h-[100px]' src={item.thumbnail} alt="" />
+                          </div>
+                          <div className="">
+                            <h2 className="font-sans text-[16px] capitalize font-bold pb-[10px]"> 
+                              {item.title}
+                            </h2>
+                            <h4 className="font-sans text-[16px] capitalize font-bold">
+                              ${item.price}
+                            </h4>
+                          </div>
+                          <div className="">
+                            <RxCross2 />
+                          </div>
+                        </div>
 
-                    <div className="py-[10px] px-3">
-                      <h3 className="font-sans text-[16px] capitalize">
-                        subtotal:<span className="font-sans text-[16px] capitalize font-bold">
-                          {' '}
-                          $44.00
-                        </span>
-                      </h3>
-                    </div>
-                    <div className="flex justify-between px-3">
-                      <div className="">
-                        <a
-                          className="w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold hover:bg-[#262626] duration-500 ease-in-out hover:text-white rounded-l"
-                          href="#"
-                        >
-                          view cart
-                        </a>
+                        <div className="py-[10px] px-3">
+                          <h3 className="font-sans text-[16px] capitalize">
+                            subtotal:<span className="font-sans text-[16px] capitalize font-bold">
+                              {' '}
+                              ${item.price}
+                            </span>
+                          </h3>
+                        </div>
+                        <div className="flex justify-between px-3">
+                          <div className="">
+
+                            <Link to="/cart"
+                              className="w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold hover:bg-[#262626] duration-500 ease-in-out hover:text-white rounded-l">view cart
+                            </Link>
+                          </div>
+                          <div className="">
+                            <a
+                              className="w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold bg-[#000] text-white hover:bg-[#fff] duration-500 ease-in-out hover:text-black rounded-l"
+                              href="#"
+                            >
+                              checkout
+                            </a>
+                          </div>
+                        </div>
                       </div>
-                      <div className="">
-                        <a
-                          className="w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold bg-[#000] text-white hover:bg-[#fff] duration-500 ease-in-out hover:text-black rounded-l"
-                          href="#"
-                        >
-                          checkout
-                        </a>
-                      </div>
-                    </div>
+                    ))}
+
                   </div>
                 )}
               </div>
