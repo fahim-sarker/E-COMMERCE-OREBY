@@ -168,16 +168,22 @@ const Navbar = () => {
                   <IoMdArrowDropdown />
                 </div>
                 {usershow && (
-                  <div className=" bg-[#000] w-[200px] py-5 px-5 absolute top-[30px] z-50 lg:left-0 left-[-150px]">
+                  <div className=" bg-[#000] w-[250px] py-5 px-5 absolute top-[50px] z-50 lg:left-0 left-[-150px] text-center">
                     <ul className="text-white font-sans text-[16px] capitalize">
-                      <li className="pb-[10px] hover:pl-[10px] duration-300 ease-in-out">
-                        login
+                      <li className="pb-[10px] hover:pl-[10px] duration-300 ease-in-out font-sans text-[18px] font-medium">
+                        <Link to="/signup">
+                          sign up
+                        </Link>
                       </li>
-                      <li className="pb-[10px] hover:pl-[10px] duration-300 ease-in-out">
-                        sign up
+                      <li className="pb-[10px] hover:pl-[10px] font-sans text-[18px] font-medium duration-300 ease-in-out">
+                        <Link to="/login">
+                          login
+                        </Link>
                       </li>
-                      <li className="pb-[10px] hover:pl-[10px] duration-300 ease-in-out">
+                      <li className="pb-[10px] hover:pl-[10px] duration-300 ease-in-out font-sans text-[18px] font-medium">
+                        <Link to="/myaccount">
                         my accopunt
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -201,7 +207,7 @@ const Navbar = () => {
                             <img className='w-[100px] h-[100px]' src={item.thumbnail} alt="" />
                           </div>
                           <div className="">
-                            <h2 className="font-sans text-[16px] capitalize font-bold pb-[10px]"> 
+                            <h2 className="font-sans text-[16px] capitalize font-bold pb-[10px]">
                               {item.title}
                             </h2>
                             <h4 className="font-sans text-[16px] capitalize font-bold">
