@@ -40,9 +40,9 @@ const Arrivals = () => {
     ]
   };
   return (
-    <>
+    <section className='lg:px-0 px-2'>
         <Container>
-            <h2 className='font-sans text-[#262626] text-[39px] lg:pb-[48px] font-bold'>New Arrivals</h2>
+            <h2 className='font-sans text-[#262626] lg:text-[39px] text-[25px] lg:pb-[48px] font-bold'>New Arrivals</h2>
             <Slider {...settings}>
               {data.map((item)=>(
                <Link to="/product">
@@ -51,7 +51,7 @@ const Arrivals = () => {
               ))}
             </Slider>
         </Container>
-    </>        
+    </section>        
   )
 }
 

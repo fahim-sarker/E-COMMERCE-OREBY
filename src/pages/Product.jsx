@@ -6,6 +6,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { apidata } from '../components/ContextApi';
 import Post from '../components/pagination/Post';
 import PaginationArea from '../components/pagination/PaginationArea';
+import { Link } from 'react-router-dom';
 
 
 const Product = () => {
@@ -18,6 +19,9 @@ const Product = () => {
   let [menulist, Setmenulist] = useState ("")
   let [bandgory, SetBandgory] = useState ([])
   let [brandsearchfilter, SetBrandsearchfilter] = useState ([])
+  let [lowprice, Setlowprice] = useState("")
+  let [highprice, Sethighprice] = useState("")
+  let [filterprice, Setfilterprice] = useState([])
 
   let catref = useRef()
   let bandref = useRef()
@@ -91,23 +95,28 @@ const Product = () => {
   let handlelist = () => {
     Setmenulist("activelist")
   }
-
+  let handleprice = (value) =>{
+    Setlowprice(value.low)
+    Sethighprice(value.high)
+    let pricefilter = data.filter((item)=>item.price > value.low && item.price < value.high)
+    Setfilterprice(pricefilter);
+  }
    
 
   return (
-    <section className='lg:py-[124px]'>
+    <section className='lg:py-[124px] lg:px-0 px-2'>
       <Container>
         <div className="lg:flex justify-between">
           <div className="lg:w-[20%] w-[100%] flex-wrap">
-            <h2 className='font-sans text-[49px] font-bold text-[#262626] pb-[11px]'>Products</h2>
-            <p className='font-sans font-normal text-[16px] text-[#767676]'>Home-Products</p>
+            <h2 className='font-sans lg:text-[49px] text-[25px] font-bold text-[#262626] pb-[11px]'>Products</h2>
+            <p className='font-sans font-normal text-[16px] text-[#767676]'><Link to="/">Home  &#62;  shop</Link> </p>
             <div className="lg:pt-[112px]  flex justify-between items-center">
-              <h2 className='cursor-pointer font-sans text-[20px] font-bold text-[#262626] pb-[30px]'>Shop by Category</h2>
+              <h2 className='cursor-pointer font-sans text-[20px] font-bold text-[#262626] pb-[30px] lg:pt-0 pt-5'>Shop by Category</h2>
             </div>
-            <div className="h-[500px] overflow-y-scroll">
+            <div className="lg:h-[500px] h-[300px] overflow-y-scroll cursor-pointer">
               <ul className=''>
                 {category.map((item)=>(
-                  <li onClick={()=>handlesubcategory(item)} className='flex justify-between font-sans text-[16px] font-normal py-[30px] border-b border-[#F0F0F0] capitalize'>{item}</li>
+                  <li onClick={()=>handlesubcategory(item)} className='flex justify-between font-sans text-[16px] font-normal lg:py-[30px] py-3 border-b border-[#F0F0F0] capitalize'>{item}</li>
                 ))}
               </ul>
             </div>
@@ -115,14 +124,33 @@ const Product = () => {
               <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Brand</h2>
               <TiArrowSortedUp />
             </div>  
-              <div className="h-[500px] overflow-y-scroll">
+              <div className="lg:h-[500px] h-[300px] overflow-y-scroll cursor-pointer">
                 {bandgory.map((item)=>(
-                <ul className='py-[30px] border-b border-[#F0F0F0]'>
+                <ul className='lg:py-[30px] py-3 border-b border-[#F0F0F0]'>
                   <li onClick={()=>handlebrand(item)} className='font-sans text-[16px] font-normal capitalize'>{item}</li>
                 </ul>
                 ))}
               </div>
-            <div ref={bandref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
+            <div className="lg:pt-[50px] pt-4 flex justify-between lg:pb-[30px] pb-2 items-center">
+              <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Price</h2>
+              <TiArrowSortedUp />
+            </div>
+              <div className="">
+                <ul className='py-[30px] border-b border-[#F0F0F0] lg:h-[300px] h-[200px] overflow-y-scroll cursor-pointer'>
+                  <li onClick={()=>handleprice({low:0,high:20})} className='font-sans text-[16px] font-normal'>$0.00 - $9.99</li>
+                  <li onClick={()=>handleprice({low:21,high:50})} className='font-sans text-[16px] font-normal pt-6'>$21.00 - $50.00</li>
+                  <li onClick={()=>handleprice({low:51,high:100})} className='font-sans text-[16px] font-normal pt-6'>$51.00 - $100</li>
+                  <li onClick={()=>handleprice({low:100,high:500})} className='font-sans text-[16px] font-normal pt-6'>$101 - $500</li>
+                  <li onClick={()=>handleprice({low:501,high:1000})} className='font-sans text-[16px] font-normal pt-6'>$501 - $1000</li>
+                  <li onClick={()=>handleprice({low:1001,high:2000})} className='font-sans text-[16px] font-normal pt-6'>$1001 - $2000</li>
+                  <li onClick={()=>handleprice({low:2001,high:3000})} className='font-sans text-[16px] font-normal pt-6'>$2001 - $3000</li>
+                  <li onClick={()=>handleprice({low:3001,high:4000})} className='font-sans text-[16px] font-normal pt-6'>$3001 - $4000</li>
+                  <li onClick={()=>handleprice({low:4001,high:5000})} className='font-sans text-[16px] font-normal pt-6'>$40011 - $5000</li>
+                  <li onClick={()=>handleprice({low:5001,high:6000})} className='font-sans text-[16px] font-normal pt-6'>$5001 - $60000</li>
+                  <li onClick={()=>handleprice({low:6001,high:10000})} className='font-sans text-[16px] font-normal pt-6'>$6001 - $10000</li>
+                </ul>
+              </div>
+                        <div ref={bandref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
               <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Color</h2>
               <TiArrowSortedUp />
             </div>
@@ -139,29 +167,6 @@ const Product = () => {
                 after:translate-y-[-48%] after:left-[0px] after:h-[11px] after:w-[11px] after:bg-[#B6B6B6] pl-[20px] after:rounded-full'>Color 4</li>
                   <li className='relative font-sans text-[16px] py-[30px] border-b border-[#F0F0F0] font-normal after:absolute after:content-[""] after:top-[48%]
                 after:translate-y-[-48%] after:left-[0px] after:h-[11px] after:w-[11px] after:bg-[#15CBA5] pl-[20px] after:rounded-full'>Color 5</li>
-                </ul>
-              </div>
-            }
-            <div ref={priceref} className="lg:pt-[50px] flex justify-between pb-[30px] items-center">
-              <h2 className='font-sans text-[20px] font-bold text-[#262626] '>Shop by Price</h2>
-              <TiArrowSortedUp />
-            </div>
-            {priceshow &&
-              <div className="">
-                <ul className='py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>$0.00 - $9.99</li>
-                </ul>
-                <ul className=' py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>$10.00 - $19.99</li>
-                </ul>
-                <ul className=' py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>$20.00 - $29.99</li>
-                </ul>
-                <ul className='py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>$30.00 - $39.99</li>
-                </ul>
-                <ul className=' py-[30px] border-b border-[#F0F0F0]'>
-                  <li className='font-sans text-[16px] font-normal'>$40.00 - $69.99</li>
                 </ul>
               </div>
             }
@@ -200,7 +205,7 @@ const Product = () => {
               </div>
             </div>
             <div className="">
-             <Post className="" allData={allData} categorysearchfilter={categorysearchfilter} brandsearchfilter={brandsearchfilter} menulist={menulist}/>
+             <Post allData={allData} categorysearchfilter={categorysearchfilter} brandsearchfilter={brandsearchfilter} menulist={menulist} filterprice={filterprice}/>
             </div>
               <div className="text-end">
                 <PaginationArea pagenumber={pagenumber} paginate={paginate} currentpage={currentpage} next={next} prev={prev}/>

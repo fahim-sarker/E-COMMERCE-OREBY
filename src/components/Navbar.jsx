@@ -5,9 +5,10 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import Cart from '../assets/cart.png';
 import { Link } from 'react-router-dom';
 import { RxCross2 } from 'react-icons/rx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { apidata } from './ContextApi';
 import { useNavigate } from 'react-router-dom';
+import { productremove } from './slice/ProductSlice';
 
 const Navbar = () => {
   let data = useSelector((state) => state.Product.cartitem);
@@ -18,11 +19,13 @@ const Navbar = () => {
   let [searchinput, setSearchInput] = useState('');
   let [searchfilter, setSearchFilter] = useState([]);
   let [selectedItemIndex, setSelectedItemIndex] = useState(-1); // Track selected item 
-  let navigate = useNavigate();
+  let navigate = useNavigate()
+  let dispatch = useDispatch()
 
   let catref = useRef();
   let userref = useRef();
   let usercartref = useRef();
+  let userstable = useRef();
 
   useEffect(() => {
     document.addEventListener('click', (e) => {
@@ -41,7 +44,12 @@ const Navbar = () => {
       } else {
         setUserCartShow(false);
       }
+      if (userstable.current.contains(e.target)) {
+        setUserCartShow(true);
+      }
     });
+
+
   }, [catshow, usershow, usercartshow]);
 
   let handleInput = (e) => {
@@ -81,9 +89,20 @@ const Navbar = () => {
     }
   };
 
+
+  let handledelete = (index) => {
+    dispatch(productremove(index))
+  }
+
+  let handletocart = () => {
+    setTimeout(() => {
+      navigate("/cart")
+    },[1000]);
+    setUserCartShow(false);
+  }
   return (
     <>
-      <nav className="bg-[#F5F5F3] py-5 lg:px-0 px-5">
+      <nav className="bg-[#F5F5F3] py-5 lg:px-0 px-2 lg:pt-[100px] pt-16">
         <Container>
           <div className="flex justify-between items-center">
             <div className="w-1/5">
@@ -136,7 +155,7 @@ const Navbar = () => {
                 <FaSearch />
               </div>
               {searchfilter.length > 0 && (
-                <div className="w-[600px] h-[400px] overflow-y-scroll z-50 absolute top-[80px] left-0 pb-3 ">
+                <div className="lg:w-[600px] lg:h-[400px] w-[200px] h-[300px] overflow-y-scroll z-50 absolute top-[80px] left-0 pb-3 ">
                   {searchfilter.map((item, index) => (
                     <div
                       key={item.id}
@@ -182,7 +201,7 @@ const Navbar = () => {
                       </li>
                       <li className="pb-[10px] hover:pl-[10px] duration-300 ease-in-out font-sans text-[18px] font-medium">
                         <Link to="/myaccount">
-                        my accopunt
+                          my accopunt
                         </Link>
                       </li>
                     </ul>
@@ -192,47 +211,41 @@ const Navbar = () => {
                   <div className="realative">
                     <FaShoppingCart />
                     {data.length > 0 && (
-                      <div className="h-[20px] w-[20px] leading-[20px] bg-[#262626] text-white rounded-full absolute top-[-18px] right-[-12px] text-center">
+                      <div className="h-[20px] w-[20px] leading-[20px] bg-[#262626] text-white rounded-full absolute top-[-15px] right-[-5px] text-center">
                         {data.length}
                       </div>
                     )}
                   </div>
                 </div>
-                {usercartshow && (
-                  <div className="w-[300px] z-50 absolute top-[50px] right-0 bg-[#fff] pb-3">
-                    {data.map((item) => (
-                      <div className="pb-5">
-                        <div className="flex  bg-[beige] justify-around items-center py-[10px]">
-                          <div className="">
-                            <img className='w-[100px] h-[100px]' src={item.thumbnail} alt="" />
-                          </div>
-                          <div className="">
-                            <h2 className="font-sans text-[16px] capitalize font-bold pb-[10px]">
-                              {item.title}
-                            </h2>
-                            <h4 className="font-sans text-[16px] capitalize font-bold">
-                              ${item.price}
-                            </h4>
-                          </div>
-                          <div className="">
-                            <RxCross2 />
+                <div ref={userstable} className="bg-[aliceblue]">
+                  {usercartshow && (
+                    <div className="w-[300px] z-50 absolute top-[50px]  right-0 pb-3">
+                      {data.map((item, index) => (
+                        <div className="pb-5">
+                          <div className="flex  bg-[aliceblue] justify-around items-center py-[10px]">
+                            <div className="">
+                              <img className='w-[100px] h-[100px]' src={item.thumbnail} alt="" />
+                            </div>
+                            <div className="">
+                              <h2 className="font-sans text-[16px] capitalize font-bold pb-[10px] px-3">
+                                {item.title}
+                              </h2>
+                              <h4 className="font-sans text-[16px] capitalize font-bold px-3">
+                                ${item.price}
+                              </h4>
+                            </div>
+                            <div onClick={() => handledelete(index)} className="pr-3">
+                              <RxCross2 />
+                            </div>
                           </div>
                         </div>
-
-                        <div className="py-[10px] px-3">
-                          <h3 className="font-sans text-[16px] capitalize">
-                            subtotal:<span className="font-sans text-[16px] capitalize font-bold">
-                              {' '}
-                              ${item.price}
-                            </span>
-                          </h3>
-                        </div>
+                      ))}
+                      {data.length > 0 &&
                         <div className="flex justify-between px-3">
                           <div className="">
-
-                            <Link to="/cart"
+                            <a onClick={handletocart}
                               className="w-[130px] h-[50px] inline-block leading-[50px] text-center border-2 border-[#262626] font-sans text-[16px] capitalize font-bold hover:bg-[#262626] duration-500 ease-in-out hover:text-white rounded-l">view cart
-                            </Link>
+                            </a>
                           </div>
                           <div className="">
                             <a
@@ -243,11 +256,10 @@ const Navbar = () => {
                             </a>
                           </div>
                         </div>
-                      </div>
-                    ))}
-
-                  </div>
-                )}
+                      }
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -35,10 +35,10 @@ const Login = () => {
     }
     return (
         <>
-            <div className='lg:py-[125px] py-[50px]'>
+            <div className='lg:py-[125px] py-[50px] lg:px-0 px-3'>
                 <Container>
-                    <h2 className='font-sans font-bold text-[36px]'>Contacts</h2>
-                    <p className='text-[16px] font-sans font-normal lg:pb-[40px] pb-[50px]'>Home  &#62;  Contacts</p>
+                    <h2 className='font-sans font-bold text-[36px]'>Login</h2>
+                    <p className='text-[16px] font-sans font-normal lg:pb-[40px] pb-[50px]'>Home  &#62;  Login</p>
                     <section className="bg-gray-50 dark:bg-gray-900">
                         <div className="flex flex-col items-center justify-center px-6 py-8 mx-0 md:h-screen lg:py-0">
 

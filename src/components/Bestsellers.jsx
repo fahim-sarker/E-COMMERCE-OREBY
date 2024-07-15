@@ -8,7 +8,7 @@ import Flex from './Flex';
 
 const Bestsellers = () => {
     return (
-        <section className='lg:py-[118px] py-[20px]'>
+        <section className='lg:py-[118px] py-[20px] px-2 lg:px-0'>
             <Container>
                <Flex className="justify-between flex-wrap">
                     <div className="lg:w-[23%] w-[48%]">

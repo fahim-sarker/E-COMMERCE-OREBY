@@ -66,14 +66,14 @@ const Signup = () => {
 
 
     return (
-        <div className='lg:py-[125px] py-[50px]'>
+        <div className='lg:py-[125px] py-[50px] lg:px-0 px-3'>
             <Container>
-                <h2 className='font-sans font-bold text-[36px]'>Contacts</h2>
-                <p className='text-[16px] font-sans font-normal lg:pb-[120px] pb-[50px]'>Home  &#62;  Contacts</p>
+                <h2 className='font-sans font-bold text-[36px]'>Sign up</h2>
+                <p className='text-[16px] font-sans font-normal lg:pb-[120px] pb-[50px]'><Link to="/">Home  &#62;  Sign up</Link></p>
                 <section>
                     <div className="mt-[30px] py-[50px] border-y-[1px]  border-[#F0F0F0]">
                         <div>
-                            <h3 className='font-dmsans text-[39px] font-bold text-[#262626] pb-10'>Your Personal Details</h3>
+                            <h3 className='font-dmsans lg:text-[39px] text-[20px] font-bold text-[#262626] pb-10'>Your Personal Details</h3>
                             <div className="lg:w-[60%] w-full flex flex-wrap justify-between">
                                 <div className="w-[48%] border-b-[1px] border-[#F0F0F0] mt-5">
                                     <h3 className='font-dmsans text-[18px] leading-[23px] font-bold text-[#262626]' placeholder='First Name'>First Name</h3>
@@ -102,7 +102,7 @@ const Signup = () => {
 
                     <div className="mt-[50px] pb-[50px] border-b-[1px]  border-[#F0F0F0]">
                         <div>
-                            <h3 className='font-dmsans text-[39px] font-bold text-[#262626] pb-10'>New Customer</h3>
+                            <h3 className='font-dmsans lg:text-[39px] text-[20px] font-bold text-[#262626] pb-10'>New Customer</h3>
                             <div className="lg:w-[60%] w-full flex flex-wrap justify-between">
                                 <div className="w-[48%] border-b-[1px] border-[#F0F0F0] mt-5">
                                     <h3 className='font-dmsans text-[18px] leading-[23px] font-bold text-[#262626]' placeholder='First Name'>Address 1</h3>
@@ -141,7 +141,7 @@ const Signup = () => {
                     <div className="mt-[50px] pb-[50px] border-b-[1px]  border-[#F0F0F0]">
                         <div>
                             <div className="">
-                                <h3 className='font-dmsans text-[39px] font-bold text-[#262626] pb-10'>Your Password</h3>
+                                <h3 className='font-dmsans lg:text-[39px] text-[20px] font-bold text-[#262626] pb-10'>Your Password</h3>
                             </div>
                             <div className="lg:w-[60%] w-full flex flex-wrap justify-between">
                                 <div className="w-[48%] border-b-[1px] border-[#F0F0F0] mt-5 relative">

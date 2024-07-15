@@ -8,10 +8,10 @@ import Sp4 from "../assets/sp3.png"
 
 const Specialoffer = () => {
   return (
-    <section className='lg:py-[118px] py-[20px]'>
+    <section className='lg:py-[118px] py-[20px] lg:px-0 px-2'>
     <Container>
         <div className="">
-        <h2 className='font-sans text-[#262626] text-[39px] lg:pb-[48px] font-bold'>Special Offers</h2>
+        <h2 className='font-sans text-[#262626] lg:text-[39px] text-[25px] lg:pb-[48px] font-bold'>Special Offers</h2>
         </div>
     <Flex className="justify-between flex-wrap">
     <div className="lg:w-[24%] w-[48%]">
